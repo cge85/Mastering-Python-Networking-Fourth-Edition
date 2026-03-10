@@ -2,9 +2,9 @@
 
 import pexpect
 
-devices = {'iosv-1': {'prompt': 'lax-edg-r1#', 'ip': '192.168.0.35'},
-           'iosv-2': {'prompt': 'lax-edg-r2#', 'ip': '192.168.0.36'}}
-username = 'cisco'
+devices = {'iosv-1': {'prompt': 'lax-edg-r1#', 'ip': '192.168.0.21'},
+           'iosv-2': {'prompt': 'lax-edg-r2#', 'ip': '192.168.0.22'}}
+username = 'admin'
 password = 'cisco'
 
 for device in devices.keys():

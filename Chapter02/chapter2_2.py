@@ -3,8 +3,8 @@
 import getpass
 from pexpect import pxssh
 
-devices = {'lax-edg-r1': {'prompt': 'lax-edg-r1#', 'ip': '192.168.0.35'},
-           'lax-edg-r2': {'prompt': 'lax-edg-r2#', 'ip': '192.168.0.36'}}
+devices = {'lax-edg-r1': {'prompt': 'lax-edg-r1#', 'ip': '192.168.0.21'},
+           'lax-edg-r2': {'prompt': 'lax-edg-r2#', 'ip': '192.168.0.22'}}
 commands = ['term length 0', 'show version', 'show run']
 
 username = input('Username: ')

@@ -2,8 +2,8 @@
 
 import paramiko, getpass, time
 
-devices = {'lax-edg-r1': {'ip': '192.168.2.51'},
-           'lax-edg-r2': {'ip': '192.168.2.52'}}
+devices = {'lax-edg-r1': {'ip': '192.168.0.21'},
+           'lax-edg-r2': {'ip': '192.168.0.22'}}
 commands = ['show version\n', 'show run\n']
 
 username = input('Username: ')
