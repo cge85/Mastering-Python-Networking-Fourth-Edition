@@ -3,9 +3,12 @@
 import requests
 import json
 import pprint
+import urllib3
 
-url='http://192.168.2.50/ins'
-switchuser='cisco'
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+url='https://192.168.0.20/ins'
+switchuser='admin'
 switchpassword='cisco'
 
 myheaders={'content-type':'application/json-rpc'}
@@ -15,12 +18,12 @@ payload=[
     "method": "cli",
     "params": {
       "cmd": "show version",
-      "version": 1.2
+      "version": 1
     },
     "id": 1
   }
 ]
-response = requests.post(url,data=json.dumps(payload), headers=myheaders,auth=(switchuser,switchpassword)).json()
+response = requests.post(url, data=json.dumps(payload), headers=myheaders, auth=(switchuser,switchpassword), verify=False).json()
 
-print(response['result']['body']['sys_ver_str'])
+print(response['result']['body']['nxos_ver_str'])
 

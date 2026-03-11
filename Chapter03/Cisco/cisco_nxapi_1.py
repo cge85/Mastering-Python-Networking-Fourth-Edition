@@ -3,9 +3,9 @@
 from ncclient import manager
 
 conn = manager.connect(
-        host='192.168.2.50', 
+        host='192.168.0.20', 
         port=22, 
-        username='cisco', 
+        username='admin', 
         password='cisco', 
         hostkey_verify=False, 
         device_params={'name': 'nexus'}, 
