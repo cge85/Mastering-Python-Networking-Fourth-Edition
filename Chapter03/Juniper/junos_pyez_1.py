@@ -3,7 +3,7 @@ from jnpr.junos import Device
 import xml.etree.ElementTree as ET
 import pprint
 
-dev = Device(host='192.168.2.70', user='juniper', passwd='juniper!')
+dev = Device(host='192.168.0.23', user='juniper', passwd='juniper!')
 
 try:
     dev.open()

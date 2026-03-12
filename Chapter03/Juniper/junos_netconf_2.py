@@ -3,7 +3,7 @@
 from ncclient import manager
 from ncclient.xml_ import new_ele, sub_ele
 
-conn = manager.connect(host='192.168.2.70', port='830', username='juniper', password='juniper!', timeout=10, device_params={'name':'junos'}, hostkey_verify=False)
+conn = manager.connect(host='192.168.0.23', port='830', username='juniper', password='juniper!', timeout=10, device_params={'name':'junos'}, hostkey_verify=False)
 
 # lock configuration and make configuration changes
 conn.lock()

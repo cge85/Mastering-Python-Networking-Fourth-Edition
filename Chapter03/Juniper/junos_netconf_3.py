@@ -24,7 +24,7 @@ def config_cmds(conn, config):
 
 
 if __name__ == '__main__':
-    conn = connect('192.168.2.70', '830', 'juniper', 'juniper!')
+    conn = connect('192.168.0.23', '830', 'juniper', 'juniper!')
     result = show_cmds(conn, 'show version')
     print('show version: ' + str(result))
     new_config = new_ele('system')

@@ -3,7 +3,7 @@
 from ncclient import manager
 
 conn = manager.connect(
-        host='192.168.2.70', 
+        host='192.168.0.23', 
         port='830', 
         username='juniper', 
         password='juniper!',
