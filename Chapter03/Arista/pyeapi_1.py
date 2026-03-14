@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import pyeapi
 
 class my_switch():
@@ -16,3 +17,13 @@ class my_switch():
         vlans.create(vlan_number)
         vlans.set_name(vlan_number, vlan_name)
 
+s1 = my_switch('~/.eapi.conf', 'nyc-edg-r4')
+s1.create_vlan(100,'TEST_VLAN')
+
+output = {
+    'hostname': s1.hostname,
+    'running_config': s1.running_config,
+    'vlans': s1.node.api('vlans').getall()
+}
+
+print(json.dumps(output, indent=2, sort_keys=True))

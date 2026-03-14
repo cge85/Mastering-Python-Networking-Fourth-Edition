@@ -12,9 +12,9 @@ def runAristaCommands(switch_object, list_of_commands):
     return response
 
 
-switch = Server("https://admin:arista@192.168.199.158/command-api") 
+switch = Server("https://admin:arista@192.168.0.34/command-api") 
 
-commands = ["enable", "configure", "interface ethernet 1/3", "switchport access vlan 100", "end", "write memory"]
+commands = ["enable", "configure", "interface ethernet 3", "switchport access vlan 100", "end", "write memory"]
 
 response = runAristaCommands(switch, commands)
 pprint.pprint(response)
