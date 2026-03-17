@@ -1,0 +1,23 @@
+---
+- name: Add Multiple VLANs
+  hosts: nyc-cor-r1
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Configure VLANs
+      cisco.nxos.nxos_vlans:
+        config:
+          - vlan_id: 100
+          - vlan_id: 200
+          - vlan_id: 300
+        state: merged
+
+    - name: Show configured VLANs
+      cisco.nxos.nxos_vlans:
+        state: gathered
+      register: vlans
+
+    - name: Display VLANs
+      ansible.builtin.debug:
+        msg: "Configured VLANs: {{ vlans.gathered |map(attribute='vlan_id') }}"

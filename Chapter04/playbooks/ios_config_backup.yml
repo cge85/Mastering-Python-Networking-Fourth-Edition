@@ -1,0 +1,27 @@
+- name: Back Up IOS Device Configurations
+  hosts: ios_devices
+  connection: network_cli
+  gather_facts: false
+  vars:
+    ansible_network_os: cisco.ios.ios
+  tasks:
+    - name: backup
+      ios_config:
+        backup: yes
+        backup_options:
+          dir_path: "{{ inventory_dir }}/backups"
+          filename: "{{ inventory_hostname }}_config.txt"
+
+- name: Back Up NXOS Device Configurations
+  hosts: nxos_devices
+  connection: network_cli
+  gather_facts: false
+  vars:
+    ansible_network_os: cisco.nxos.nxos
+  tasks:
+    - name: backup
+      ios_config:
+        backup: yes
+        backup_options:
+          dir_path: "{{ inventory_dir }}/backups"
+          filename: "{{ inventory_hostname }}_config.txt"
