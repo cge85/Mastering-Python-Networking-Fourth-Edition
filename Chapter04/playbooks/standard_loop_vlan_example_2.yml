@@ -1,0 +1,49 @@
+---
+- name: Add Multiple Vlans
+  hosts: "nyc-cor-r1"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Configure VLANs and Descriptions
+      cisco.nxos.nxos_vlans:
+        config:
+          - vlan_id: 100
+            name: "floor_1"
+          - vlan_id: 200
+            name: "floor_2"
+          - vlan_id: 300
+            name: "floor_3"
+        state: merged
+
+    - name: Configure IP Addresses on VLAN Interfaces
+      cisco.nxos.nxos_l3_interfaces:
+        config:
+          - name: "Vlan100"
+            ipv4:
+              - address: "192.168.10.1/24"
+          - name: "Vlan200"
+            ipv4:
+              - address: "192.168.20.1/24"
+          - name: "Vlan300"
+            ipv4:
+              - address: "192.168.30.1/24"
+        state: merged
+
+    - name: Gather configured VLANs
+      cisco.nxos.nxos_vlans:
+        state: gathered
+      register: vlans
+
+    - name: Gather configured VLAN IP Addresses
+      cisco.nxos.nxos_l3_interfaces:
+        state: gathered
+      register: vlan_ips
+
+    - name: Show configured VLANs and Descriptions
+      ansible.builtin.debug:
+        msg: "{{ vlans.gathered | map(attribute='vlan_id') | map('string') | zip(vlans.gathered | map(attribute='name')) | map('join', ' - ') | map('regex_replace', '^', 'VLAN ') | list }}"
+
+    - name: Show configured VLAN IP Addresses
+      ansible.builtin.debug:
+        msg: "{{ vlan_ips.gathered | selectattr('name', 'match', '^Vlan') | selectattr('ipv4', 'defined') | list | map(attribute='name') | zip(vlan_ips.gathered | selectattr('name', 'match', '^Vlan') | selectattr('ipv4', 'defined') | list | map(attribute='ipv4') | map('first') | map(attribute='address')) | map('join', ' - ') | list }}"
