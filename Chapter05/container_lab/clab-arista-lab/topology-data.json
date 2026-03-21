@@ -1,0 +1,101 @@
+{
+  "name": "arista-lab",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-e6f4e30a88e7",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHAiYjaR5Mb2bt86dpOA9EitQw1+Y3oH12HPkxPPyy5","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwVlC4BSZUWGIriBXwnJ8VTCVFvoqvSrazzbMs/m15V","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+0/5nwRdULwmwQr6MQP3MmbdXM/elrYzzwKCQl8/Ha","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIApyjl4W6O9oaliDxB+oYNsVqFtvZL2fKtWtb4CDZ+pl"],
+  "nodes": {
+    "ceos1": {
+      "index": "0",
+      "shortname": "ceos1",
+      "longname": "clab-arista-lab-ceos1",
+      "fqdn": "ceos1.arista-lab.io",
+      "group": "",
+      "labdir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-arista-lab/ceos1",
+      "kind": "arista_ceos",
+      "image": "ceos:4.35.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:fb:b2:dc",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-e6f4e30a88e7",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-arista-lab/ceos1",
+        "clab-node-longname": "clab-arista-lab-ceos1",
+        "clab-node-name": "ceos1",
+        "clab-node-type": "",
+        "clab-owner": "cliffdev",
+        "clab-topo-file": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/my-lab.clab.yml",
+        "containerlab": "arista-lab"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ceos2": {
+      "index": "1",
+      "shortname": "ceos2",
+      "longname": "clab-arista-lab-ceos2",
+      "fqdn": "ceos2.arista-lab.io",
+      "group": "",
+      "labdir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-arista-lab/ceos2",
+      "kind": "arista_ceos",
+      "image": "ceos:4.35.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:1d:01:41",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-e6f4e30a88e7",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-arista-lab/ceos2",
+        "clab-node-longname": "clab-arista-lab-ceos2",
+        "clab-node-name": "ceos2",
+        "clab-node-type": "",
+        "clab-owner": "cliffdev",
+        "clab-topo-file": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/my-lab.clab.yml",
+        "containerlab": "arista-lab"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "ceos1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:65:c6:e3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "ceos2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:7c:19:1a",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: arista-lab
+topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.35.2F
+  nodes:
+    ceos1:
+      kind: arista_ceos
+      labels:
+        graph-level: 1
+        graph-icon: host
+    ceos2:
+      kind: arista_ceos
+      labels:
+        graph-level: 1
+        graph-icon: host
+  links:
+  - endpoints: ['ceos1:eth1', 'ceos2:eth1']
+annotations: null

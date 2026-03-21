@@ -1,0 +1,101 @@
+{
+  "name": "srl02",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-c1e75fe96829",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHAiYjaR5Mb2bt86dpOA9EitQw1+Y3oH12HPkxPPyy5","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwVlC4BSZUWGIriBXwnJ8VTCVFvoqvSrazzbMs/m15V","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+0/5nwRdULwmwQr6MQP3MmbdXM/elrYzzwKCQl8/Ha","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIApyjl4W6O9oaliDxB+oYNsVqFtvZL2fKtWtb4CDZ+pl"],
+  "nodes": {
+    "srl1": {
+      "index": "0",
+      "shortname": "srl1",
+      "longname": "clab-srl02-srl1",
+      "fqdn": "srl1.srl02.io",
+      "group": "",
+      "labdir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-srl02/srl1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:ce:00:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-c1e75fe96829",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-srl02/srl1",
+        "clab-node-longname": "clab-srl02-srl1",
+        "clab-node-name": "srl1",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "cliffdev",
+        "clab-topo-file": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/srl02.clab.yml",
+        "containerlab": "srl02"
+      },
+      "port-bindings": [
+      ]
+    },
+    "srl2": {
+      "index": "1",
+      "shortname": "srl2",
+      "longname": "clab-srl02-srl2",
+      "fqdn": "srl2.srl02.io",
+      "group": "",
+      "labdir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-srl02/srl2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:7c:01:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-c1e75fe96829",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/clab-srl02/srl2",
+        "clab-node-longname": "clab-srl02-srl2",
+        "clab-node-name": "srl2",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "cliffdev",
+        "clab-topo-file": "/home/cliffdev/Mastering-Python-Networking-Fourth-Edition/Chapter05/container_lab/srl02.clab.yml",
+        "containerlab": "srl02"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "srl1",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:08:f0:c2",
+          "peer": "z"
+        },
+        "z": {
+          "node": "srl2",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:63:93:b6",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
