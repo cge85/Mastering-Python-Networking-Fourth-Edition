@@ -1,0 +1,42 @@
+---
+- name: Configure Access List
+  hosts: nxosv-devices
+  gather_facts: false
+  connection: network_cli
+  
+  tasks:
+    - name: Configure ACL Entries
+      cisco.nxos.nxos_acls:
+        config:
+          - afi: ipv4
+            acls:
+              - name: border_inbound
+                aces:
+                  - sequence: 20
+                    grant: deny
+                    protocol: tcp
+                    source:
+                      prefix: 172.16.0.0/12
+                    destination:
+                      any: true
+                    log: true
+                  - sequence: 30
+                    grant: deny
+                    protocol: tcp
+                    source:
+                      prefix: 192.168.0.0/16
+                    destination:
+                      any: true
+                    log: true
+        state: merged
+
+    - name: Apply ingress acl to Ethernet 1/10
+      cisco.nxos.nxos_acl_interfaces:
+        config:
+          - name: Ethernet1/10
+            access_groups:
+              - afi: ipv4
+                acls:
+                  - name: border_inbound
+                    direction: in
+        state: merged

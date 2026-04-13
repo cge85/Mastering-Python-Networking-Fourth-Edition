@@ -1,0 +1,20 @@
+---
+- name: Configure Access List
+  hosts: iosv-devices
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Deny Hosts with vendor id fa16.3e00.0000
+      cisco.ios.ios_config:
+        lines:
+          - access-list 700 deny fa16.3e00.0000 0000.00ff.ffff
+          - access-list 700 permit 0000.0000.0000 ffff.ffff.ffff
+
+    - name: Apply filter on bridge group 1
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/3
+        lines:
+          - bridge-group 1
+          - bridge-group 1 input-address-list 700
