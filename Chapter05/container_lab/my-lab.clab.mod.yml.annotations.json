@@ -1,0 +1,28 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "icon": "host",
+      "id": "ceos1",
+      "position": {
+        "x": 380,
+        "y": 340
+      }
+    },
+    {
+      "icon": "host",
+      "id": "ceos2",
+      "position": {
+        "x": 520,
+        "y": 340
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}

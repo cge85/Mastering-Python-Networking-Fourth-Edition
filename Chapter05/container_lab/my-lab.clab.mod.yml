@@ -15,5 +15,4 @@ topology:
         graph-level: 1
         graph-icon: host
   links:
-  - endpoints: ['ceos1:eth1', 'ceos2:eth1']
-annotations: null
+    - endpoints: [ "ceos1:eth1", "ceos2:eth1" ]
